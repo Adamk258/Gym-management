@@ -8,7 +8,7 @@ class Reservation {
 private:
     int reservationId;      
     int salleId;            
-    std::string memberName; 
+    std::string memberName; /*can do membre id */
     std::string date;       
     int groupSize;          
 

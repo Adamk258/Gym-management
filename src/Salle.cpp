@@ -2,7 +2,11 @@
 
 
 Salle::Salle(int id,std::string name, int capacity,  std::vector<std::string> sports)
-    : id(id), name(name), capacity(capacity), sports(sports) {}
+    : id(id), name(name), capacity(capacity), sports(sports) {
+
+
+        /*need to implement file saving when a new salle is created */
+    }
 
 
 int Salle::getId() const {

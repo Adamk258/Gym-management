@@ -4,7 +4,10 @@
 
 // Constructor
 Reservation::Reservation(int reservationId, int salleId,std::string memberName,std::string date, int groupSize)
-    : reservationId(reservationId), salleId(salleId), memberName(memberName), date(date), groupSize(groupSize) {}
+    : reservationId(reservationId), salleId(salleId), memberName(memberName), date(date), groupSize(groupSize) {
+
+        /* implement that when a reservation happen , we need to check the file salles.txt to check the group size*/
+    }
 
 // Getters
 int Reservation::getReservationId() const {
@@ -45,5 +48,6 @@ void Reservation::setGroupSize(int groupSize) {
 }
 
 bool Reservation::isValidForSalle(Salle& salle){
+     /* implement that when a reservation happen , we need to check the file salles.txt to check the group size , you can use Salle id instead of Salle in the parameters*/
     return salle.getId() == salleId && salle.canAccommodate(groupSize);
 }
