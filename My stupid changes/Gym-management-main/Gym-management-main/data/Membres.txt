@@ -1,0 +1,6 @@
+ID, name, age, date_insc, nom_salle_derniere,prime_payee
+1, John Doe, 30, 2023-05-01, Salle A, 1
+2, Jane Smith, 25, 2023-06-12, Salle B, 0
+3, Paul Johnson, 40, 2023-07-22, Salle C, 1
+4, Anna White, 35, 2023-08-18, Salle D, 1
+5, Tom Brown, 50, 2023-09-14, Salle E, 0
