@@ -1,0 +1,6 @@
+ID, Name, Capacity, Location
+1 50 Salle A
+2 30 Salle B
+3 100 Salle C
+4 200 Salle D
+5 20 Salle E

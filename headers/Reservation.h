@@ -7,21 +7,24 @@
 class Reservation {
 private:
     int reservationId;      
-    int salleId;            
-    std::string memberName; /*can do membre id */
+    Salle salle;       
+    int memberId;     
+    std::string memberName; 
     std::string date;       
-    int groupSize;          
+    int groupSize;    
+    bool valide;      
 
 public:
-    Reservation(int reservationId, int salleId,std::string memberName, std::string date, int groupSize);
+    Reservation(int reservationId, Salle& salle,int memberId ,std::string memberName, std::string date, int groupSize);
 
     int getReservationId() const;
     int getSalleId() const;
+    int getMembreId() const;
     std::string getMemberName() const;
     std::string getDate() const;
     int getGroupSize() const;
 
-    void setSalleId(int salleId);
+    
     void setMemberName(std::string memberName);
     void setDate(std::string date);
     void setGroupSize(int groupSize);

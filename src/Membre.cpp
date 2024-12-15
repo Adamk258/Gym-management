@@ -1,11 +1,38 @@
-#include "../headers/Membre.hpp"
+#include "../headers/Membre.h"
 #include "../headers/Person.h"
+#include "../headers/FileManager.h"
+
 #include <iostream>
 
-Membre::Membre(int id, std::string name, int age, int date_insc, std::string nom_salle_derniere, bool prime_payé) : date_insc(date_insc), nom_salle_derniere(nom_salle_derniere), prime_payé(prime_payé) {}
+Membre::Membre(int id, const std::string& name, int age, const std::string& date_insc, const std::string& nom_salle_derniere, bool prime_payee)
+    : Person(id, name, age), 
+      date_insc(date_insc),
+      prime_payee(prime_payee),
+      nom_salle_derniere(nom_salle_derniere) {
+
+
+        
+
+   FileManager fileManager("./data/Membres.txt");
+
+    std::string ReservationData = std::to_string(id) + ", " +
+                            name + ", " +
+                            std::to_string(age) + ", " +
+                            date_insc + ", " +
+                            nom_salle_derniere + ", " +
+                            std::to_string(prime_payee);
+
+    if (!fileManager.appendToFile(ReservationData)) {
+        throw std::runtime_error("Error: Could not add salle to file");
+    }
+
+    std::cout << "Membre ajoutee au Database \n";
+    
+        
+}
 
 //Getters
-int Membre::getDateInsc() const
+std::string Membre::getDateInsc() const
 {
     return date_insc;
 }
@@ -17,7 +44,7 @@ std::string  Membre::getNomSalleDerniere() const
 
 bool  Membre::checkPrimePaye() const
 {
-    return prime_payé;
+    return prime_payee;
 }
 
 //Setters
@@ -26,7 +53,7 @@ bool  Membre::checkPrimePaye() const
     nom_salle_derniere = newSalleDerniere;
  }
 
-void Membre::setDateInsc(int newDateInsc)
+void Membre::setDateInsc(std::string newDateInsc)
 {
     date_insc = newDateInsc;
 }
@@ -36,6 +63,6 @@ void Membre::displayDetails()
     std::cout
         << "Date d'insrciption: " << date_insc << "\n"
         << "Derniere Salle: " << nom_salle_derniere << "\n"
-        << "Membre Prime: " << prime_payé << "\n";
+        << "Membre Prime: " << prime_payee << "\n";
 }
 

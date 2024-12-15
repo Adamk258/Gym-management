@@ -1,12 +1,28 @@
 #include "../headers/Salle.h"
+#include "../headers/FileManager.h"
+#include <iostream>
 
 
 Salle::Salle(int id,std::string name, int capacity,  std::vector<std::string> sports)
     : id(id), name(name), capacity(capacity), sports(sports) {
 
 
-        /*need to implement file saving when a new salle is created */
+
+    FileManager fileManager("./data/salles.txt");
+
+    // Format the salle data
+    std::string salleData = std::to_string(id) + " " +
+                            std::to_string(capacity) + " " +
+                            name;
+
+    // Append to the file using FileManager
+    if (!fileManager.appendToFile(salleData)) {
+        throw std::runtime_error("Error: Could not add salle to salles.txt");
     }
+
+    std::cout << "Salle ajoutée au Database \n";
+}
+
 
 
 int Salle::getId() const {

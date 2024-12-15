@@ -1,21 +1,36 @@
 #include "../headers/FileManager.h"
 #include <iostream>
 
-std::vector<std::string> FileManager::loadData(const std::string& filePath) {
-    std::vector<std::string> data;
-    std::ifstream file(filePath);
-    std::string line;
 
-    if (file.is_open()) {
-        while (getline(file, line)) {
-            data.push_back(line);
-        }
-        file.close();
-    } else {
-        std::cerr << "Unable to open file for reading: " << filePath << std::endl;
+FileManager::FileManager(const std::string& filePath) : filePath(filePath) {}
+
+
+
+bool FileManager::appendToFile(const std::string& data) {
+    std::ofstream file(filePath, std::ios::app); // Open file in append mode
+    if (!file.is_open()) {
+        std::cerr << "Error: Could not open file " << filePath << " for appending." << std::endl;
+        return false;
+    }
+    file << data << std::endl;
+    file.close();
+    return true;
+}
+
+std::vector<std::string> FileManager::loadData() {
+    std::ifstream file(filePath);
+    std::vector<std::string> lines;
+    if (!file.is_open()) {
+        std::cerr << "Error: Could not open file " << filePath << " for reading." << std::endl;
+        return lines;
     }
 
-    return data;
+    std::string line;
+    while (std::getline(file, line)) {
+        lines.push_back(line);
+    }
+    file.close();
+    return lines;
 }
 
 void FileManager::saveData(const std::string& filePath, const std::vector<std::string>& data) {

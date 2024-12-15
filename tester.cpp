@@ -1,50 +1,61 @@
-#include "headers/Person.h"
+#include "headers/Membre.h"
 #include "headers/Salle.h"
 #include "headers/Reservation.h"
 #include "headers/FileManager.h"
+#include "headers/GymManagement.h"
 
 
 #include <iostream>
 #include <vector>
 
 
+
+
 int main() {
-/*
-    Person P = Person(1,"hamza",21);
-
-     P.displayDetails();
- 
 
 
+GymManagementSystem gymSystem;
+
+    int choice;
+    bool running = true;
+
+/* For loading data , if there is no data in the files uncomment this 
+    Salle salle1(1, "Salle A", 50, {"Basketball", "Volleyball", "Tennis"});
+    Salle salle2(2, "Salle B", 30, {"Football", "Badminton", "Tennis"});
+    Salle salle3(3, "Salle C", 100, {"Basketball", "Swimming", "Football"});
+    Salle salle4(4, "Salle D", 200, {"Tennis", "Table Tennis"});
+    Salle salle5(5, "Salle E", 20, {"Yoga", "Zumba", "Pilates"});
 
 
-    for (std::string sp : sports) {
 
-        std::cout << sp;
-    }
-
-    
-
-    
-    std::vector<std::string> sports = {"Basketball", "Tennis"};
-    Salle salle1(1, "Main Hall", 50, sports);
-
-     // Create a Reservation object
-    Reservation res1(101, 1, "John Doe", "2024-12-15", 25);
-
-    // Test reservation validity
-    std::cout << "Reservation is valid for Salle: " 
-              << (res1.isValidForSalle(salle1) ? "Yes" : "No") << std::endl;
- */
-
-
-std::vector<std::string> dataToSave = {
-        "Hello, World!",
-        "This is a test."
+    std::vector<std::string> sportsData = {
+        "Basketball",
+        "Football",
+        "Tennis",
+        "Volleyball",
+        "Badminton"
     };
 
-std::string filePath = "test_file.txt";
-FileManager::saveData(filePath, dataToSave);
-std::cout << "Data saved to " << filePath << std::endl;
+    // Save to sports.txt using the FileManager class
+    FileManager fileManagerSports("./data/Sports.txt");
+
+    fileManagerSports.saveData("./data/Sports.txt", sportsData);
+
+    Membre membre1(1, "John Doe", 30, "2023-05-01", "Salle A", true);
+    Membre membre2(2, "Jane Smith", 25, "2023-06-12", "Salle B", false);
+    Membre membre3(3, "Paul Johnson", 40, "2023-07-22", "Salle C", true);
+    Membre membre4(4, "Anna White", 35, "2023-08-18", "Salle D", true);
+    Membre membre5(5, "Tom Brown", 50, "2023-09-14", "Salle E", false);
+   
+
+*/
+
+    while (running) {
+        gymSystem.showMenu(); // Show menu options
+        std::cin >> choice;  // Get user choice
+
+        
+    }
+
 
 }
